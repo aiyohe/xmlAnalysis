@@ -41,9 +41,9 @@ public class Transaction {
         init();
         String sql;
         if (type == 2) {
-            sql = " insert  into  t_weather_forecast_day ( id,stationcode,stationname,hour,wspeed,wdir,t,wp,humi)  values (?,?,?,?,?,?,?,?,?)";
+            sql = " insert  into  t_weather_forecast_day ( id,stationcode,stationname,hour,wspeed,wdir,t,wp,humi,time)  values (?,?,?,?,?,?,?,?,?,?)";
         } else {
-            sql = " insert  into  t_weather_forecast_hour ( id,stationcode,stationname,hour,wspeed,wdir,t,wp,humi)  values (?,?,?,?,?,?,?,?,?)";
+            sql = " insert  into  t_weather_forecast_hour ( id,stationcode,stationname,hour,wspeed,wdir,t,wp,humi,time)  values (?,?,?,?,?,?,?,?,?,?)";
         }
         try {
             for (int i = 0; i < jsar.size(); i++) {
@@ -63,7 +63,7 @@ public class Transaction {
                     prs.setString(7, (String) data.get("t"));
                     prs.setString(8, (String) data.get("wp"));
                     prs.setString(9, (String) data.get("humi"));
-                    //prs.setString(10,date);
+                    prs.setString(10,date);
                     prs.executeUpdate();
                 }
             }
